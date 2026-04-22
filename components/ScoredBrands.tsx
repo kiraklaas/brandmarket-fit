@@ -13,54 +13,63 @@ export default function ScoredBrands() {
   return (
     <section className="bg-[#FDFBF5] py-24 md:py-32 px-6 md:px-10">
       <div className="max-w-5xl mx-auto">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2
-            className="text-3xl md:text-5xl font-bold text-[#1A1A1A] leading-tight mb-4"
-            style={{ fontFamily: "var(--font-stack), 'Arial Black', sans-serif" }}
-          >
-            Who has BMF?
-          </h2>
-          <p className="text-base md:text-lg text-[#1A1A1A] max-w-2xl leading-relaxed">
-            You can see strong and weak brand-market fit in the brands you already know. Here&apos;s how three competitive categories score across the 5 dimensions of BMF.
-          </p>
-        </motion.div>
 
-        {/* Tabs */}
-        <div className="flex gap-0 mt-10 mb-8 border-b border-[#E2DED6] overflow-x-auto">
-          {BRAND_CATEGORIES.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveTab(cat.id)}
-              className="relative px-5 py-3 text-sm font-medium whitespace-nowrap transition-colors"
-              style={{
-                color: activeTab === cat.id ? "#1A1A1A" : "#6B6560",
-              }}
+        {/* Header + tabs on same row at md+ */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-10">
+          <motion.div
+            className="max-w-xl"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2
+              className="text-3xl md:text-5xl font-bold text-[#1A1A1A] leading-tight mb-3"
+              style={{ fontFamily: "var(--font-stack), 'Arial Black', sans-serif" }}
             >
-              {cat.label}
-              {activeTab === cat.id && (
-                <motion.div
-                  layoutId="tab-indicator"
-                  className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-[#1A1A1A]"
-                />
-              )}
-            </button>
-          ))}
+              Who has BMF?
+            </h2>
+            <p className="text-sm text-[#1A1A1A] leading-relaxed">
+              You can see strong and weak brand-market fit in the brands you already know. Here&apos;s how three competitive categories score across the 5 dimensions of BMF.
+            </p>
+          </motion.div>
+
+          {/* Category tabs */}
+          <motion.div
+            className="flex gap-1 p-1 rounded-full flex-shrink-0"
+            style={{ background: "#EDEAE4" }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.15 }}
+          >
+            {BRAND_CATEGORIES.map((cat) => {
+              const isActive = activeTab === cat.id;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveTab(cat.id)}
+                  className="relative px-4 py-2 rounded-full text-xs font-medium whitespace-nowrap transition-all duration-200"
+                  style={{
+                    background: isActive ? "#1A1A1A" : "transparent",
+                    color: isActive ? "#FDFBF5" : "#6B6560",
+                  }}
+                >
+                  {cat.label}
+                </button>
+              );
+            })}
+          </motion.div>
         </div>
 
         {/* Matrix */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.25 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2 }}
           >
             <BrandMatrix brands={activeCategory.brands} />
           </motion.div>
@@ -68,13 +77,13 @@ export default function ScoredBrands() {
 
         {/* Footnote */}
         <motion.p
-          className="mt-8 text-xs text-[#1A1A1A] leading-relaxed max-w-2xl"
+          className="mt-5 text-xs text-[#1A1A1A] leading-relaxed"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          These scores are based on publicly available brand signals — messaging, visual identity, customer language, and market differentiation. Hover any cell for the rationale.
+          Scores reflect publicly available brand signals — messaging, visual identity, customer language, and market differentiation.
         </motion.p>
       </div>
     </section>
