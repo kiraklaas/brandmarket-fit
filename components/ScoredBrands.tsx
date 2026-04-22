@@ -20,17 +20,14 @@ export default function ScoredBrands() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-xs font-medium tracking-[0.12em] uppercase text-[#1A1A1A] mb-4">
-            Brands, scored
-          </p>
           <h2
             className="text-3xl md:text-5xl font-bold text-[#1A1A1A] leading-tight mb-4"
             style={{ fontFamily: "var(--font-stack), 'Arial Black', sans-serif" }}
           >
-            BMF isn&apos;t abstract.
+            Who has BMF?
           </h2>
           <p className="text-base md:text-lg text-[#1A1A1A] max-w-2xl leading-relaxed">
-            You can see it in the brands you already know. Here&apos;s how three competitive categories score across the 5 dimensions of brand-market fit.
+            You can see strong and weak brand-market fit in the brands you already know. Here&apos;s how three competitive categories score across the 5 dimensions of BMF.
           </p>
         </motion.div>
 

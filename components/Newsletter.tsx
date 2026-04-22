@@ -17,7 +17,7 @@ export default function Newsletter() {
             className="text-3xl md:text-5xl leading-tight mb-5"
             style={{
               fontFamily: "var(--font-editorial), Georgia, serif",
-              fontStyle: "italic",
+              fontStyle: "normal",
               color: "#FDFBF5",
             }}
           >

@@ -34,19 +34,13 @@ export default function SeanEllisSurvey() {
               fontFamily: "var(--font-stack), 'Arial Black', sans-serif",
             }}
           >
-            The Sean Ellis test for brand.
+            The PMF test for brand.
           </h2>
           <p className="text-sm text-[#1A1A1A] leading-relaxed mb-4">
-            Sean Ellis&apos;s PMF survey asks users:{" "}
-            &ldquo;How would you feel if you could no longer use this product?&rdquo;
-            {" "}— with 40%+ answering &ldquo;Very disappointed&rdquo; as the benchmark for PMF.
+            Sean Ellis&apos;s original PMF survey asks users: &ldquo;How would you feel if you could no longer use this product?&rdquo; If 40%+ answer with &ldquo;Very disappointed,&rdquo; you have PMF.
           </p>
-          <p className="text-sm text-[#1A1A1A] leading-relaxed mb-6">
-            The Brand Market Fit survey asks:{" "}
-            &ldquo;If this company completely overhauled their brand tomorrow — new name, new visual identity, new messaging — how would you feel?&rdquo;
-          </p>
-          <p className="text-sm font-semibold text-[#1A1A1A]">
-            40%+ responding &ldquo;Very upset&rdquo; is the signal for strong BMF.
+          <p className="text-sm text-[#1A1A1A] leading-relaxed">
+            The BMF survey asks: &ldquo;If this company completely overhauled their brand tomorrow (new name, new visual identity, new messaging), how would you feel?&rdquo;
           </p>
         </motion.div>
 
