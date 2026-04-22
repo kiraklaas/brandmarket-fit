@@ -9,7 +9,6 @@ export default function SeanEllisSurvey() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // MVP: just show success. Wire to Substack/email provider when ready.
     setSubmitted(true);
   }
 
@@ -26,7 +25,7 @@ export default function SeanEllisSurvey() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-xs font-medium tracking-[0.12em] uppercase text-[#888] mb-4">
+          <p className="text-xs font-medium tracking-[0.12em] uppercase text-[#1A1A1A] mb-4">
             Want to go deeper? Run the survey.
           </p>
           <h2
@@ -37,22 +36,14 @@ export default function SeanEllisSurvey() {
           >
             The Sean Ellis test for brand.
           </h2>
-          <p className="text-sm text-[#555] leading-relaxed mb-4">
+          <p className="text-sm text-[#1A1A1A] leading-relaxed mb-4">
             Sean Ellis&apos;s PMF survey asks users:{" "}
-            <em>
-              &ldquo;How would you feel if you could no longer use this
-              product?&rdquo;
-            </em>{" "}
-            — with 40%+ answering &ldquo;Very disappointed&rdquo; as the
-            benchmark for PMF.
+            &ldquo;How would you feel if you could no longer use this product?&rdquo;
+            {" "}— with 40%+ answering &ldquo;Very disappointed&rdquo; as the benchmark for PMF.
           </p>
-          <p className="text-sm text-[#555] leading-relaxed mb-6">
+          <p className="text-sm text-[#1A1A1A] leading-relaxed mb-6">
             The Brand Market Fit survey asks:{" "}
-            <em>
-              &ldquo;If this company completely overhauled their brand tomorrow
-              — new name, new visual identity, new messaging — how would you
-              feel?&rdquo;
-            </em>
+            &ldquo;If this company completely overhauled their brand tomorrow — new name, new visual identity, new messaging — how would you feel?&rdquo;
           </p>
           <p className="text-sm font-semibold text-[#1A1A1A]">
             40%+ responding &ldquo;Very upset&rdquo; is the signal for strong BMF.
@@ -67,7 +58,7 @@ export default function SeanEllisSurvey() {
           transition={{ duration: 0.5, delay: 0.15 }}
         >
           <div className="border border-[#E2DED6] rounded-2xl p-8">
-            <p className="text-[10px] font-medium tracking-[0.12em] uppercase text-[#888] mb-5">
+            <p className="text-[10px] font-medium tracking-[0.12em] uppercase text-[#1A1A1A] mb-5">
               Free Download
             </p>
             <h3 className="text-lg font-bold text-[#1A1A1A] mb-4 leading-snug">
@@ -82,7 +73,7 @@ export default function SeanEllisSurvey() {
               ].map((item) => (
                 <li
                   key={item}
-                  className="flex items-start gap-2.5 text-sm text-[#555]"
+                  className="flex items-start gap-2.5 text-sm text-[#1A1A1A]"
                 >
                   <span className="text-[#E5D62F] mt-0.5 flex-shrink-0 text-base leading-none">
                     ✦
@@ -95,9 +86,7 @@ export default function SeanEllisSurvey() {
             {submitted ? (
               <div className="text-sm text-[#1A1A1A]">
                 <p className="font-semibold mb-1">✓ You&apos;re on the list.</p>
-                <p className="text-[#888]">
-                  The survey instrument will be in your inbox shortly.
-                </p>
+                <p>The survey instrument will be in your inbox shortly.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-3">
@@ -115,7 +104,7 @@ export default function SeanEllisSurvey() {
                 >
                   Get the survey →
                 </button>
-                <p className="text-[10px] text-[#C8BFB5] text-center">
+                <p className="text-[10px] text-[#1A1A1A] text-center">
                   No spam. Unsubscribe anytime.
                 </p>
               </form>

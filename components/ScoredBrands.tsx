@@ -20,7 +20,7 @@ export default function ScoredBrands() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-xs font-medium tracking-[0.12em] uppercase text-[#888] mb-4">
+          <p className="text-xs font-medium tracking-[0.12em] uppercase text-[#1A1A1A] mb-4">
             Brands, scored
           </p>
           <h2
@@ -29,7 +29,7 @@ export default function ScoredBrands() {
           >
             BMF isn&apos;t abstract.
           </h2>
-          <p className="text-base md:text-lg text-[#888] max-w-2xl leading-relaxed">
+          <p className="text-base md:text-lg text-[#1A1A1A] max-w-2xl leading-relaxed">
             You can see it in the brands you already know. Here&apos;s how three competitive categories score across the 5 dimensions of brand-market fit.
           </p>
         </motion.div>
@@ -42,7 +42,7 @@ export default function ScoredBrands() {
               onClick={() => setActiveTab(cat.id)}
               className="relative px-5 py-3 text-sm font-medium whitespace-nowrap transition-colors"
               style={{
-                color: activeTab === cat.id ? "#1A1A1A" : "#A09890",
+                color: activeTab === cat.id ? "#1A1A1A" : "#6B6560",
               }}
             >
               {cat.label}
@@ -71,7 +71,7 @@ export default function ScoredBrands() {
 
         {/* Footnote */}
         <motion.p
-          className="mt-8 text-xs text-[#A09890] leading-relaxed max-w-2xl"
+          className="mt-8 text-xs text-[#1A1A1A] leading-relaxed max-w-2xl"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

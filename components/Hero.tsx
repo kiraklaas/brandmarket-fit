@@ -2,20 +2,26 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { motion, useMotionValue, useTransform, useScroll, useSpring } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  useScroll,
+  useSpring,
+} from "framer-motion";
 
+// Each image has a position (% of hero area) and parallax factors
 interface BrandImage {
   src: string;
   label: string;
   alt: string;
   width: number;
   height: number;
-  // Position within the hero grid
+  // Position as % of hero container
   top: string;
   left?: string;
   right?: string;
   rotate: number;
-  // Parallax factors (how much the image moves relative to mouse/scroll)
   mouseX: number;
   mouseY: number;
   scrollY: number;
@@ -26,81 +32,105 @@ const BRAND_IMAGES: BrandImage[] = [
     src: "/images/poppi.png",
     label: "POPPI",
     alt: "Poppi soda can",
-    width: 110,
-    height: 130,
-    top: "12%",
-    left: "38%",
-    rotate: -8,
-    mouseX: 0.6,
-    mouseY: 0.4,
-    scrollY: 0.3,
+    width: 90,
+    height: 108,
+    top: "8%",
+    left: "36%",
+    rotate: -7,
+    mouseX: 0.5,
+    mouseY: 0.3,
+    scrollY: 0.28,
   },
   {
     src: "/images/sweetgreen.png",
     label: "SWEETGREEN",
     alt: "Sweetgreen fries",
-    width: 120,
-    height: 110,
-    top: "10%",
-    right: "6%",
-    rotate: 6,
+    width: 100,
+    height: 90,
+    top: "7%",
+    right: "4%",
+    rotate: 5,
     mouseX: -0.4,
-    mouseY: 0.6,
-    scrollY: 0.5,
+    mouseY: 0.5,
+    scrollY: 0.45,
   },
   {
     src: "/images/claude.png",
     label: "CLAUDE",
     alt: "Claude billboard",
-    width: 160,
-    height: 130,
-    top: "42%",
-    left: "20%",
-    rotate: -4,
-    mouseX: 0.3,
-    mouseY: -0.5,
-    scrollY: 0.4,
-  },
-  {
-    src: "/images/away.png",
-    label: "AWAY",
-    alt: "Away suitcase",
     width: 130,
-    height: 160,
-    top: "55%",
-    right: "5%",
-    rotate: 5,
-    mouseX: -0.5,
-    mouseY: -0.3,
-    scrollY: 0.6,
-  },
-  {
-    src: "/images/oura.png",
-    label: "OURA",
-    alt: "Oura ring",
-    width: 100,
-    height: 90,
-    top: "68%",
-    left: "42%",
+    height: 105,
+    top: "40%",
+    left: "17%",
     rotate: -3,
-    mouseX: 0.5,
-    mouseY: 0.3,
-    scrollY: 0.35,
+    mouseX: 0.3,
+    mouseY: -0.4,
+    scrollY: 0.38,
   },
   {
     src: "/images/ramp.png",
     label: "RAMP",
     alt: "Ramp OOH ad",
-    width: 140,
-    height: 120,
-    top: "30%",
-    right: "12%",
-    rotate: 7,
+    width: 115,
+    height: 98,
+    top: "28%",
+    right: "8%",
+    rotate: 6,
     mouseX: -0.3,
-    mouseY: 0.5,
-    scrollY: 0.45,
+    mouseY: 0.4,
+    scrollY: 0.42,
+  },
+  {
+    src: "/images/oura.png",
+    label: "OURA",
+    alt: "Oura ring",
+    width: 88,
+    height: 80,
+    top: "65%",
+    left: "40%",
+    rotate: -4,
+    mouseX: 0.4,
+    mouseY: 0.2,
+    scrollY: 0.32,
+  },
+  {
+    src: "/images/away.png",
+    label: "AWAY",
+    alt: "Away suitcase",
+    width: 105,
+    height: 130,
+    top: "52%",
+    right: "3%",
+    rotate: 4,
+    mouseX: -0.5,
+    mouseY: -0.3,
+    scrollY: 0.55,
   },
 ];
+
+// Words that get Instrument Serif treatment (regular, not italic)
+const SERIF_WORDS = new Set(["PRODUCT", "ISN'T", "GOOD", "BRAND"]);
+
+function Word({ text }: { text: string }) {
+  // Strip punctuation for lookup
+  const clean = text.replace(/[^A-Z']/g, "");
+  const isSerif = SERIF_WORDS.has(clean);
+
+  return (
+    <span
+      style={{
+        fontFamily: isSerif
+          ? '"Instrument Serif", Georgia, serif'
+          : "var(--font-stack), 'Arial Black', sans-serif",
+        fontWeight: isSerif ? 400 : 700,
+        fontStyle: "normal",
+        letterSpacing: isSerif ? "-0.01em" : "-0.02em",
+      }}
+    >
+      {text}
+    </span>
+  );
+}
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -126,6 +156,10 @@ export default function Hero() {
     mouseY.set(0);
   }
 
+  // Headline words — each gets either Stack or Instrument Serif
+  const line1Words = ["YOUR", "PRODUCT", "MARKET", "FIT", "ISN'T", "ENOUGH."];
+  const line2Words = ["HOW", "GOOD", "IS", "YOUR", "BRAND", "MARKET", "FIT?"];
+
   return (
     <section
       ref={containerRef}
@@ -135,10 +169,7 @@ export default function Hero() {
     >
       {/* Nav */}
       <nav className="relative z-20 flex items-center justify-between px-6 py-5 md:px-10">
-        <span
-          className="text-sm font-medium tracking-tight text-[#1A1A1A]"
-          style={{ fontFamily: "var(--font-graphik), system-ui" }}
-        >
+        <span className="text-sm font-medium tracking-tight text-[#1A1A1A]">
           brandmarket.fit
         </span>
         <a
@@ -149,7 +180,7 @@ export default function Hero() {
         </a>
       </nav>
 
-      {/* Floating brand images */}
+      {/* Floating brand images — z-index above text */}
       {BRAND_IMAGES.map((img) => (
         <FloatingImage
           key={img.label}
@@ -160,21 +191,32 @@ export default function Hero() {
         />
       ))}
 
-      {/* Headline */}
-      <div className="relative z-10 flex-1 flex flex-col justify-center px-6 md:px-10 pb-24 pt-8">
+      {/* Headline — two lines, mixed typography */}
+      <div className="relative z-10 flex-1 flex flex-col justify-center px-6 md:px-10 pb-20 pt-4">
         <h1
-          className="font-hero uppercase leading-[0.88] text-[#1A1A1A] select-none"
+          className="uppercase text-[#1A1A1A] select-none leading-[0.9]"
           style={{
-            fontFamily: "var(--font-stack), 'Arial Black', Impact, sans-serif",
-            fontSize: "clamp(3.5rem, 10vw, 10rem)",
-            fontWeight: 700,
-            letterSpacing: "-0.02em",
+            fontSize: "clamp(2.4rem, 5.8vw, 6.2rem)",
           }}
         >
-          <span className="block">Your product market fit</span>
-          <span className="block">isn&apos;t enough.</span>
-          <span className="block mt-2">How good is your</span>
-          <span className="block">brand market fit?</span>
+          {/* Line 1 */}
+          <span className="block">
+            {line1Words.map((w, i) => (
+              <span key={i}>
+                <Word text={w} />
+                {i < line1Words.length - 1 ? " " : ""}
+              </span>
+            ))}
+          </span>
+          {/* Line 2 */}
+          <span className="block">
+            {line2Words.map((w, i) => (
+              <span key={i}>
+                <Word text={w} />
+                {i < line2Words.length - 1 ? " " : ""}
+              </span>
+            ))}
+          </span>
         </h1>
       </div>
     </section>
@@ -194,7 +236,11 @@ function FloatingImage({
 }) {
   const x = useTransform(smoothX, (v) => v * img.mouseX * 0.04);
   const y = useTransform(smoothY, (v) => v * img.mouseY * 0.04);
-  const scrollOffset = useTransform(scrollY, [0, 800], [0, img.scrollY * 120]);
+  const scrollOffset = useTransform(
+    scrollY,
+    [0, 800],
+    [0, img.scrollY * 100]
+  );
   const combinedY = useTransform(
     [y, scrollOffset],
     ([mouseYVal, scrollVal]: number[]) => mouseYVal + scrollVal
@@ -202,7 +248,7 @@ function FloatingImage({
 
   return (
     <motion.div
-      className="absolute z-10 pointer-events-none select-none"
+      className="absolute z-20 pointer-events-none select-none"
       style={{
         top: img.top,
         left: img.left,
@@ -218,11 +264,11 @@ function FloatingImage({
           alt={img.alt}
           width={img.width}
           height={img.height}
-          className="object-contain drop-shadow-[0_8px_24px_rgba(0,0,0,0.18)]"
+          className="object-contain drop-shadow-[0_6px_20px_rgba(0,0,0,0.16)]"
           draggable={false}
         />
         <span
-          className="text-[10px] font-medium tracking-[0.12em] text-[#888] uppercase"
+          className="text-[9px] font-medium tracking-[0.1em] text-[#1A1A1A] uppercase"
           style={{ fontFamily: "var(--font-graphik), system-ui" }}
         >
           {img.label}

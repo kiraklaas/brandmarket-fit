@@ -23,7 +23,7 @@ export default function WhatIsBMF() {
       <div className="max-w-5xl mx-auto">
         {/* Section label */}
         <motion.p
-          className="text-xs font-medium tracking-[0.12em] uppercase text-[#888] mb-8"
+          className="text-xs font-medium tracking-[0.12em] uppercase text-[#1A1A1A] mb-8"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -43,9 +43,7 @@ export default function WhatIsBMF() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              <h3
-                className="text-xs font-medium tracking-[0.1em] uppercase text-[#888] mb-4"
-              >
+              <h3 className="text-xs font-medium tracking-[0.1em] uppercase text-[#1A1A1A] mb-4">
                 {panel.heading}
               </h3>
               <p className="text-[1.05rem] leading-relaxed text-[#1A1A1A]">
@@ -54,37 +52,6 @@ export default function WhatIsBMF() {
             </motion.div>
           ))}
         </div>
-
-        {/* Pull quote */}
-        <motion.blockquote
-          className="mt-20 md:mt-28 text-center"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <p
-            className="text-2xl md:text-4xl leading-snug text-[#1A1A1A] max-w-3xl mx-auto"
-            style={{
-              fontFamily: "var(--font-editorial), Georgia, serif",
-              fontStyle: "italic",
-            }}
-          >
-            &ldquo;If someone could swap your brand name for a competitor&apos;s in your marketing — and you can barely tell the difference — you don&apos;t have brand-market fit.&rdquo;
-          </p>
-        </motion.blockquote>
-
-        {/* Hero line */}
-        <motion.p
-          className="mt-16 text-center text-base md:text-lg text-[#888] max-w-xl mx-auto leading-relaxed"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          PMF gets you in the game.{" "}
-          <span className="text-[#1A1A1A] font-medium">Brand-market fit helps you win it.</span>
-        </motion.p>
       </div>
     </section>
   );

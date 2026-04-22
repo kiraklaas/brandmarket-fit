@@ -77,10 +77,10 @@ export default function QuestionStep({
       {/* Progress */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-[10px] font-medium tracking-[0.12em] uppercase text-[#888]">
+          <span className="text-[10px] font-medium tracking-[0.12em] uppercase text-[#1A1A1A]">
             {question.isBonus ? "Bonus Question" : `Question ${progressLabel}`}
           </span>
-          <span className="text-[10px] text-[#C8BFB5]">
+          <span className="text-[10px] text-[#1A1A1A]">
             {question.isBonus ? "Not scored" : `${Math.round(progressPct)}%`}
           </span>
         </div>
@@ -93,7 +93,7 @@ export default function QuestionStep({
           />
         </div>
         {question.isBonus && (
-          <p className="text-[10px] text-[#A09890] mt-2">
+          <p className="text-[10px] text-[#1A1A1A] mt-2">
             This question mirrors the customer survey you can run externally. Reported separately from your score.
           </p>
         )}
@@ -171,7 +171,7 @@ export default function QuestionStep({
         {!isFirst && (
           <button
             onClick={onBack}
-            className="px-5 py-2.5 rounded-full border border-[#E2DED6] text-sm font-medium text-[#888] hover:border-[#1A1A1A] hover:text-[#1A1A1A] transition-colors"
+            className="px-5 py-2.5 rounded-full border border-[#E2DED6] text-sm font-medium text-[#1A1A1A] hover:border-[#1A1A1A] hover:text-[#1A1A1A] transition-colors"
           >
             ← Back
           </button>

@@ -58,14 +58,14 @@ export default function BrandMatrix({ brands }: { brands: Brand[] }) {
                 key={d}
                 className="text-center pb-3 min-w-[80px]"
               >
-                <span className="text-[10px] font-semibold tracking-[0.08em] uppercase text-[#A09890]">
+                <span className="text-[10px] font-semibold tracking-[0.08em] uppercase text-[#1A1A1A]">
                   {d}
                 </span>
               </th>
             ))}
             {/* Score header */}
             <th className="text-center pb-3 min-w-[70px]">
-              <span className="text-[10px] font-semibold tracking-[0.08em] uppercase text-[#A09890]">
+              <span className="text-[10px] font-semibold tracking-[0.08em] uppercase text-[#1A1A1A]">
                 Score
               </span>
             </th>
@@ -152,7 +152,7 @@ export default function BrandMatrix({ brands }: { brands: Brand[] }) {
 
       {/* Legend */}
       <div className="flex items-center gap-2 mt-5 pl-1">
-        <span className="text-[10px] text-[#C0B8B0]">Weak</span>
+        <span className="text-[10px] text-[#1A1A1A]">Weak</span>
         {[1, 2, 3, 4, 5].map((s) => (
           <div
             key={s}
@@ -160,7 +160,7 @@ export default function BrandMatrix({ brands }: { brands: Brand[] }) {
             style={{ background: matrixBg(s) }}
           />
         ))}
-        <span className="text-[10px] text-[#C0B8B0]">Strong</span>
+        <span className="text-[10px] text-[#1A1A1A]">Strong</span>
       </div>
 
       {/* Tooltip — fixed position */}

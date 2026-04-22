@@ -106,7 +106,7 @@ export default function Assessment() {
               transition={{ duration: 0.4 }}
               className="max-w-2xl"
             >
-              <p className="text-xs font-medium tracking-[0.12em] uppercase text-[#888] mb-4">
+              <p className="text-xs font-medium tracking-[0.12em] uppercase text-[#1A1A1A] mb-4">
                 Self-Assessment
               </p>
               <h2
@@ -118,11 +118,11 @@ export default function Assessment() {
               >
                 How strong is your BMF?
               </h2>
-              <p className="text-base text-[#888] mb-2 leading-relaxed">
+              <p className="text-base text-[#1A1A1A] mb-2 leading-relaxed">
                 Answer 10 questions + one bonus. Takes ~4 minutes.
                 No login required.
               </p>
-              <p className="text-sm text-[#A09890] mb-10 leading-relaxed">
+              <p className="text-sm text-[#1A1A1A] mb-10 leading-relaxed">
                 2 questions per dimension (internal signal + external signal).
                 Results show your score out of 25, broken down by dimension,
                 with specific next steps.
@@ -168,7 +168,7 @@ export default function Assessment() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4 }}
             >
-              <p className="text-xs font-medium tracking-[0.12em] uppercase text-[#888] mb-6">
+              <p className="text-xs font-medium tracking-[0.12em] uppercase text-[#1A1A1A] mb-6">
                 Your Results
               </p>
               <Results result={result} onRetake={handleRetake} />

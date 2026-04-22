@@ -34,11 +34,11 @@ export default function SignalBars({ scores, total }: SignalBarsProps) {
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-semibold text-[#1A1A1A] flex items-center gap-2">
                   {dim.name}
-                  <span className="text-[10px] text-[#A09890] normal-case font-normal">
+                  <span className="text-[10px] text-[#1A1A1A] normal-case font-normal">
                     {isExpanded ? "▲" : "▼"}
                   </span>
                 </span>
-                <span className="text-sm text-[#A09890]">{score}/5</span>
+                <span className="text-sm text-[#1A1A1A]">{score}/5</span>
               </div>
               <div
                 className="h-2 rounded-full overflow-hidden"
@@ -63,7 +63,7 @@ export default function SignalBars({ scores, total }: SignalBarsProps) {
                   transition={{ duration: 0.25 }}
                   className="overflow-hidden"
                 >
-                  <p className="mt-3 text-sm text-[#555] leading-relaxed pl-0 border-l-2 border-[#E2DED6] pl-4">
+                  <p className="mt-3 text-sm text-[#1A1A1A] leading-relaxed pl-0 border-l-2 border-[#E2DED6] pl-4">
                     {dim.interpretations[score]}
                   </p>
                 </motion.div>

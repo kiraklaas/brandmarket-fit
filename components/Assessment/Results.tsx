@@ -53,7 +53,7 @@ export default function Results({ result, onRetake }: ResultsProps) {
       {/* Score header */}
       <div className="flex items-start justify-between mb-8">
         <div>
-          <p className="text-[10px] font-medium tracking-[0.12em] uppercase text-[#888] mb-2">
+          <p className="text-[10px] font-medium tracking-[0.12em] uppercase text-[#1A1A1A] mb-2">
             Your BMF Score
           </p>
           <div className="flex items-baseline gap-1.5">
@@ -63,7 +63,7 @@ export default function Results({ result, onRetake }: ResultsProps) {
             >
               {total}
             </span>
-            <span className="text-2xl text-[#C8BFB5] font-normal">/25</span>
+            <span className="text-2xl text-[#1A1A1A] font-normal">/25</span>
           </div>
         </div>
         <div className="text-right">
@@ -76,7 +76,7 @@ export default function Results({ result, onRetake }: ResultsProps) {
           >
             {bandLabel}
           </span>
-          <p className="text-xs text-[#888] mt-2 max-w-[160px] text-right leading-snug">
+          <p className="text-xs text-[#1A1A1A] mt-2 max-w-[160px] text-right leading-snug">
             {bandDesc}
           </p>
         </div>
@@ -91,14 +91,14 @@ export default function Results({ result, onRetake }: ResultsProps) {
             className="px-4 py-1.5 rounded-full text-xs font-medium transition-all"
             style={{
               background: vizTab === tab ? "#1A1A1A" : "transparent",
-              color: vizTab === tab ? "#FDFBF5" : "#888",
+              color: vizTab === tab ? "#FDFBF5" : "#1A1A1A",
             }}
           >
             {tab === "bars" ? "Signal Bars" : "Fingerprint"}
           </button>
         ))}
         <button
-          className="px-4 py-1.5 rounded-full text-xs font-medium text-[#C8BFB5] cursor-not-allowed"
+          className="px-4 py-1.5 rounded-full text-xs font-medium text-[#1A1A1A] cursor-not-allowed"
           disabled
           title="Coming soon — need more submissions to build benchmark data"
         >
@@ -120,13 +120,13 @@ export default function Results({ result, onRetake }: ResultsProps) {
 
       {/* Q11 BMF signal verdict */}
       <div className="border border-[#E2DED6] rounded-2xl p-6 mb-8">
-        <p className="text-[10px] font-medium tracking-[0.12em] uppercase text-[#888] mb-3">
+        <p className="text-[10px] font-medium tracking-[0.12em] uppercase text-[#1A1A1A] mb-3">
           Bonus — BMF Signal Question
         </p>
         <p className="text-sm font-bold text-[#1A1A1A] mb-1.5">
           {signalVerdict.headline}
         </p>
-        <p className="text-sm text-[#555] leading-relaxed mb-4">
+        <p className="text-sm text-[#1A1A1A] leading-relaxed mb-4">
           {signalVerdict.body}
         </p>
         <a
@@ -142,7 +142,7 @@ export default function Results({ result, onRetake }: ResultsProps) {
         <p className="text-sm font-semibold text-[#1A1A1A] mb-1">
           Get the full scoring guide
         </p>
-        <p className="text-xs text-[#888] mb-4 leading-relaxed">
+        <p className="text-xs text-[#1A1A1A] mb-4 leading-relaxed">
           Benchmark data from 100+ assessed brands, plus detailed next steps for each dimension.
         </p>
         {submitted ? (
@@ -171,7 +171,7 @@ export default function Results({ result, onRetake }: ResultsProps) {
       {/* Retake */}
       <button
         onClick={onRetake}
-        className="text-xs text-[#888] underline underline-offset-2 hover:text-[#1A1A1A] transition-colors"
+        className="text-xs text-[#1A1A1A] underline underline-offset-2 hover:text-[#1A1A1A] transition-colors"
       >
         Retake assessment
       </button>

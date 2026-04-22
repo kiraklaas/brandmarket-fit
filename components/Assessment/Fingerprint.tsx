@@ -108,7 +108,7 @@ export default function Fingerprint({ scores, size = 300 }: FingerprintProps) {
         })}
       </svg>
 
-      <p className="text-[10px] text-[#A09890] mt-2 text-center">
+      <p className="text-[10px] text-[#1A1A1A] mt-2 text-center">
         Gray = maximum possible. Black = your scores.
         <br />
         Shape matters — balanced is better than one strong spike.
