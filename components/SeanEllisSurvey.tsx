@@ -15,7 +15,7 @@ export default function SeanEllisSurvey() {
   return (
     <section
       id="survey"
-      className="bg-[#FDFBF5] py-24 md:py-32 px-6 md:px-10 border-t border-[#E2DED6]"
+      className="bg-[#FAFAF8] py-24 md:py-32 px-6 md:px-10 border-t border-[#E2DED6]"
     >
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
         {/* Left: copy */}
@@ -31,15 +31,21 @@ export default function SeanEllisSurvey() {
           <h2
             className="text-3xl md:text-4xl font-bold text-[#1A1A1A] leading-tight mb-6"
             style={{
-              fontFamily: "var(--font-stack), 'Arial Black', sans-serif",
+              fontFamily: "var(--font-graphik), system-ui, sans-serif",
             }}
           >
             The PMF test for brand.
           </h2>
-          <p className="text-sm text-[#1A1A1A] leading-relaxed mb-4">
+          <p
+            className="text-[1.1rem] text-[#1A1A1A] leading-relaxed mb-4"
+            style={{ fontFamily: '"Instrument Serif", Georgia, serif' }}
+          >
             Sean Ellis&apos;s original PMF survey asks users: &ldquo;How would you feel if you could no longer use this product?&rdquo; If 40%+ answer with &ldquo;Very disappointed,&rdquo; you have PMF.
           </p>
-          <p className="text-sm text-[#1A1A1A] leading-relaxed">
+          <p
+            className="text-[1.1rem] text-[#1A1A1A] leading-relaxed"
+            style={{ fontFamily: '"Instrument Serif", Georgia, serif' }}
+          >
             The BMF survey asks: &ldquo;If this company completely overhauled their brand tomorrow (new name, new visual identity, new messaging), how would you feel?&rdquo;
           </p>
         </motion.div>
@@ -67,7 +73,11 @@ export default function SeanEllisSurvey() {
               ].map((item) => (
                 <li
                   key={item}
-                  className="flex items-start gap-2.5 text-sm text-[#1A1A1A]"
+                  className="flex items-start gap-2.5 text-[#1A1A1A]"
+                  style={{
+                    fontFamily: '"Instrument Serif", Georgia, serif',
+                    fontSize: "1.05rem",
+                  }}
                 >
                   <span className="text-[#E5D62F] mt-0.5 flex-shrink-0 text-base leading-none">
                     ✦
@@ -78,7 +88,7 @@ export default function SeanEllisSurvey() {
             </ul>
 
             {submitted ? (
-              <div className="text-sm text-[#1A1A1A]">
+              <div className="text-[#1A1A1A]" style={{ fontFamily: '"Instrument Serif", Georgia, serif', fontSize: "1.05rem" }}>
                 <p className="font-semibold mb-1">✓ You&apos;re on the list.</p>
                 <p>The survey instrument will be in your inbox shortly.</p>
               </div>
@@ -94,7 +104,7 @@ export default function SeanEllisSurvey() {
                 />
                 <button
                   type="submit"
-                  className="w-full px-6 py-3 rounded-full bg-[#1A1A1A] text-[#FDFBF5] text-sm font-medium hover:bg-[#333] transition-colors"
+                  className="w-full px-6 py-3 rounded-full bg-[#1A1A1A] text-[#FAFAF8] text-sm font-medium hover:bg-[#333] transition-colors"
                 >
                   Get the survey →
                 </button>

@@ -9,7 +9,7 @@ export default function Footer() {
             href="https://kiraklaas.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#888] underline underline-offset-2 hover:text-[#FDFBF5] transition-colors"
+            className="text-[#888] underline underline-offset-2 hover:text-[#FAFAF8] transition-colors"
           >
             Kira Klaas
           </a>
@@ -18,7 +18,7 @@ export default function Footer() {
           href="https://kiraklaas.substack.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[#888] hover:text-[#FDFBF5] transition-colors"
+          className="text-[#888] hover:text-[#FAFAF8] transition-colors"
         >
           On Brand ↗
         </a>

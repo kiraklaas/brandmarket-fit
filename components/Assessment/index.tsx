@@ -93,7 +93,7 @@ export default function Assessment() {
   return (
     <section
       id="assessment"
-      className="bg-[#FDFBF5] py-24 md:py-32 px-6 md:px-10 border-t border-[#E2DED6]"
+      className="bg-[#FAFAF8] py-24 md:py-32 px-6 md:px-10 border-t border-[#E2DED6]"
     >
       <div className="max-w-5xl mx-auto">
         <AnimatePresence mode="wait">
@@ -112,24 +112,29 @@ export default function Assessment() {
               <h2
                 className="text-3xl md:text-5xl font-bold text-[#1A1A1A] leading-tight mb-4"
                 style={{
-                  fontFamily:
-                    "var(--font-stack), 'Arial Black', sans-serif",
+                  fontFamily: "var(--font-graphik), system-ui, sans-serif",
                 }}
               >
                 How strong is your BMF?
               </h2>
-              <p className="text-base text-[#1A1A1A] mb-2 leading-relaxed">
+              <p
+                className="text-[1.1rem] text-[#1A1A1A] mb-2 leading-relaxed"
+                style={{ fontFamily: '"Instrument Serif", Georgia, serif' }}
+              >
                 Answer 10 questions + one bonus. Takes ~4 minutes.
                 No login required.
               </p>
-              <p className="text-sm text-[#1A1A1A] mb-10 leading-relaxed">
+              <p
+                className="text-[1.05rem] text-[#1A1A1A] mb-10 leading-relaxed"
+                style={{ fontFamily: '"Instrument Serif", Georgia, serif' }}
+              >
                 2 questions per dimension (internal signal + external signal).
                 Results show your score out of 25, broken down by dimension,
                 with specific next steps.
               </p>
               <button
                 onClick={() => setStep("question")}
-                className="inline-flex items-center gap-2 bg-[#1A1A1A] text-[#FDFBF5] px-7 py-3.5 rounded-full text-sm font-medium hover:bg-[#333] transition-colors"
+                className="inline-flex items-center gap-2 bg-[#1A1A1A] text-[#FAFAF8] px-7 py-3.5 rounded-full text-sm font-medium hover:bg-[#333] transition-colors"
               >
                 Start the assessment →
               </button>

@@ -182,7 +182,7 @@ export default function QuestionStep({
           className="px-6 py-2.5 rounded-full text-sm font-medium transition-all"
           style={{
             background: hasValue ? "#1A1A1A" : "#E2DED6",
-            color: hasValue ? "#FDFBF5" : "#A09890",
+            color: hasValue ? "#FAFAF8" : "#A09890",
             cursor: hasValue ? "pointer" : "not-allowed",
           }}
         >

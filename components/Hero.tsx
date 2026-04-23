@@ -10,14 +10,12 @@ import {
   useSpring,
 } from "framer-motion";
 
-// Each image has a position (% of hero area) and parallax factors
 interface BrandImage {
   src: string;
   label: string;
   alt: string;
   width: number;
   height: number;
-  // Position as % of hero container
   top: string;
   left?: string;
   right?: string;
@@ -58,8 +56,8 @@ const BRAND_IMAGES: BrandImage[] = [
     src: "/images/claude.png",
     label: "CLAUDE",
     alt: "Claude billboard",
-    width: 130,
-    height: 105,
+    width: 140,
+    height: 113,
     top: "40%",
     left: "17%",
     rotate: -3,
@@ -71,8 +69,8 @@ const BRAND_IMAGES: BrandImage[] = [
     src: "/images/ramp.png",
     label: "RAMP",
     alt: "Ramp OOH ad",
-    width: 115,
-    height: 98,
+    width: 125,
+    height: 106,
     top: "28%",
     right: "8%",
     rotate: 6,
@@ -97,8 +95,8 @@ const BRAND_IMAGES: BrandImage[] = [
     src: "/images/away.png",
     label: "AWAY",
     alt: "Away suitcase",
-    width: 105,
-    height: 130,
+    width: 110,
+    height: 136,
     top: "52%",
     right: "3%",
     rotate: 4,
@@ -112,7 +110,6 @@ const BRAND_IMAGES: BrandImage[] = [
 const SERIF_WORDS = new Set(["PRODUCT", "ISN'T", "GOOD", "BRAND"]);
 
 function Word({ text }: { text: string }) {
-  // Strip punctuation for lookup
   const clean = text.replace(/[^A-Z']/g, "");
   const isSerif = SERIF_WORDS.has(clean);
 
@@ -121,10 +118,10 @@ function Word({ text }: { text: string }) {
       style={{
         fontFamily: isSerif
           ? '"Instrument Serif", Georgia, serif'
-          : "var(--font-stack), 'Arial Black', sans-serif",
-        fontWeight: isSerif ? 400 : 700,
+          : "var(--font-graphik), system-ui, sans-serif",
+        fontWeight: isSerif ? 400 : 600,
         fontStyle: "normal",
-        letterSpacing: isSerif ? "-0.01em" : "-0.02em",
+        letterSpacing: isSerif ? "-0.01em" : "-0.03em",
       }}
     >
       {text}
@@ -156,14 +153,13 @@ export default function Hero() {
     mouseY.set(0);
   }
 
-  // Headline words — each gets either Stack or Instrument Serif
   const line1Words = ["YOUR", "PRODUCT", "MARKET", "FIT", "ISN'T", "ENOUGH."];
   const line2Words = ["HOW", "GOOD", "IS", "YOUR", "BRAND", "MARKET", "FIT?"];
 
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex flex-col overflow-hidden bg-[#FDFBF5]"
+      className="relative min-h-screen flex flex-col overflow-hidden bg-[#FAFAF8]"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
@@ -174,7 +170,7 @@ export default function Hero() {
         </span>
         <a
           href="#assessment"
-          className="inline-flex items-center gap-2 bg-[#1A1A1A] text-[#FDFBF5] text-sm font-medium px-5 py-2.5 rounded-full hover:bg-[#333] transition-colors"
+          className="inline-flex items-center gap-2 bg-[#1A1A1A] text-[#FAFAF8] text-sm font-medium px-5 py-2.5 rounded-full hover:bg-[#333] transition-colors"
         >
           Take the assessment →
         </a>
@@ -191,12 +187,23 @@ export default function Hero() {
         />
       ))}
 
-      {/* Headline — two lines, mixed typography */}
+      {/* Headline */}
       <div className="relative z-10 flex-1 flex flex-col justify-center px-6 md:px-10 pb-20 pt-4">
+        {/* Lead-in line */}
+        <motion.p
+          className="text-base md:text-lg text-[#1A1A1A] mb-4 leading-snug"
+          style={{ fontFamily: '"Instrument Serif", Georgia, serif' }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          So you found product market fit.
+        </motion.p>
+
         <h1
-          className="uppercase text-[#1A1A1A] select-none leading-[0.9]"
+          className="uppercase text-[#1A1A1A] select-none leading-[0.88]"
           style={{
-            fontSize: "clamp(2.4rem, 5.8vw, 6.2rem)",
+            fontSize: "clamp(3rem, 7.5vw, 8.5rem)",
           }}
         >
           {/* Line 1 */}

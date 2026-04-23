@@ -17,15 +17,6 @@ const graphik = localFont({
   fallback: ["system-ui", "sans-serif"],
 });
 
-// Hero headline font — Stack Sans Text (variable, weight 200–700)
-const stackSans = localFont({
-  src: "../public/fonts/StackSansText-Variable.ttf",
-  variable: "--font-stack",
-  display: "swap",
-  weight: "200 700",
-  fallback: ["'Arial Black'", "Impact", "sans-serif"],
-});
-
 // Editorial font — Instrument Serif (wired via @font-face in globals.css)
 
 export const metadata: Metadata = {
@@ -53,8 +44,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${graphik.variable} ${stackSans.variable}`}>
-      <body className="min-h-screen bg-[#FDFBF5] text-[#1A1A1A]">
+    <html lang="en" className={`${graphik.variable}`}>
+      <body className="min-h-screen bg-[#FAFAF8] text-[#1A1A1A]">
         {children}
       </body>
     </html>

@@ -17,7 +17,7 @@
 }
 
 :root {
-  --background: #FDFBF5;
+  --background: #FAFAF8;
   --foreground: #1A1A1A;
   --accent: #E5D62F;
   --border: #E2DED6;
@@ -30,13 +30,12 @@
   --color-accent: var(--accent);
   --color-border: var(--border);
   --color-muted: var(--muted);
-  --color-matrix-1: #F0EDE8;
-  --color-matrix-2: #D3CCC4;
-  --color-matrix-3: #A39A90;
-  --color-matrix-4: #5C5650;
-  --color-matrix-5: #1E1B18;
+  --color-matrix-1: #F2E6C4;
+  --color-matrix-2: #DDB754;
+  --color-matrix-3: #C07A28;
+  --color-matrix-4: #7A3F10;
+  --color-matrix-5: #200E04;
   --font-sans: var(--font-graphik);
-  --font-hero: var(--font-stack);
   --font-editorial: "Instrument Serif", Georgia, serif;
 }
 

@@ -16,14 +16,20 @@ export default function Newsletter() {
           <h2
             className="text-3xl md:text-5xl leading-tight mb-5"
             style={{
-              fontFamily: "var(--font-editorial), Georgia, serif",
+              fontFamily: '"Instrument Serif", Georgia, serif',
               fontStyle: "normal",
-              color: "#FDFBF5",
+              color: "#FAFAF8",
             }}
           >
             Want more like this?
           </h2>
-          <p className="text-[#A09890] text-sm leading-relaxed">
+          <p
+            className="text-[1.05rem] leading-relaxed"
+            style={{
+              fontFamily: '"Instrument Serif", Georgia, serif',
+              color: "#A09890",
+            }}
+          >
             Weekly frameworks, examples, and takes on brand building — from
             someone who&apos;s done it at Notion, Brex, and beyond.
           </p>

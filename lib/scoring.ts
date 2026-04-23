@@ -165,20 +165,34 @@ export function paramsToAnswers(
   return answers;
 }
 
-// Heat map color scale (from viz prototype)
+// Heat map color scale — warm amber/cognac palette
+// Used for the legend bar (solid colors)
 export function matrixBg(score: number): string {
   const colors: Record<number, string> = {
-    1: "#F0EDE8",
-    2: "#D3CCC4",
-    3: "#A39A90",
-    4: "#5C5650",
-    5: "#1E1B18",
+    1: "#F2E6C4",
+    2: "#DDB754",
+    3: "#C07A28",
+    4: "#7A3F10",
+    5: "#200E04",
   };
-  return colors[score] ?? "#F0EDE8";
+  return colors[score] ?? "#F2E6C4";
+}
+
+// Radial gradient version — lighter center gives optical glow, adjacent
+// similar-score cells bleed into each other creating a spectrum feel
+export function matrixGradient(score: number): string {
+  const gradients: Record<number, string> = {
+    1: "radial-gradient(ellipse at 40% 30%, #FFF9EA, #E8D498)",
+    2: "radial-gradient(ellipse at 40% 30%, #F0D07A, #C09030)",
+    3: "radial-gradient(ellipse at 40% 30%, #D89040, #9A5818)",
+    4: "radial-gradient(ellipse at 40% 30%, #9A5020, #5A2808)",
+    5: "radial-gradient(ellipse at 40% 30%, #3C1C08, #100602)",
+  };
+  return gradients[score] ?? gradients[1];
 }
 
 export function matrixFg(score: number): string {
-  return score >= 4 ? "#FAFAF8" : "#1E1B18";
+  return score >= 4 ? "#F8E8C0" : "#2A1508";
 }
 
 export const DIMENSION_KEYS: DimensionKey[] = [

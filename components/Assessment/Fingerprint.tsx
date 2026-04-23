@@ -84,7 +84,7 @@ export default function Fingerprint({ scores, size = 300 }: FingerprintProps) {
         {/* Actual scores blob */}
         <path d={blobPath} fill="#1A1A1A" opacity={0.9} />
         {/* Center dot */}
-        <circle cx={cx} cy={cy} r={3} fill="#FDFBF5" />
+        <circle cx={cx} cy={cy} r={3} fill="#FAFAF8" />
 
         {/* Axis labels */}
         {DIMENSIONS_INFO.map((dim, i) => {

@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { DIMENSIONS, type Brand, type Dimension } from "@/data/brands";
-import { matrixBg, matrixFg, getBand, BAND_LABELS } from "@/lib/scoring";
+import { matrixBg, matrixGradient, matrixFg, getBand, BAND_LABELS } from "@/lib/scoring";
 
 interface TooltipState {
   brand: string;
@@ -21,6 +21,14 @@ function scoreDotColor(total: number) {
   if (band === "approaching") return "#5C5650";
   if (band === "developing") return "#A39A90";
   return "#D3CCC4";
+}
+
+// Border radius for cells that touch each other — only outer corners rounded
+function cellRadius(index: number, total: number): string {
+  if (total === 1) return "8px";
+  if (index === 0) return "8px 0 0 8px";
+  if (index === total - 1) return "0 8px 8px 0";
+  return "0";
 }
 
 export default function BrandMatrix({ brands }: { brands: Brand[] }) {
@@ -70,7 +78,7 @@ export default function BrandMatrix({ brands }: { brands: Brand[] }) {
                 <th
                   key={brand.name}
                   className="text-center"
-                  style={{ padding: "24px 12px 16px", minWidth: 120 }}
+                  style={{ padding: "24px 0 16px", minWidth: 120 }}
                 >
                   <div className="flex flex-col items-center gap-2">
                     {/* Logo */}
@@ -119,35 +127,34 @@ export default function BrandMatrix({ brands }: { brands: Brand[] }) {
               >
                 {/* Dimension label */}
                 <td style={{ padding: "10px 20px" }}>
-                  <span
-                    className="text-[10px] font-semibold text-[#1A1A1A] uppercase tracking-widest"
-                  >
+                  <span className="text-[10px] font-semibold text-[#1A1A1A] uppercase tracking-widest">
                     {dim}
                   </span>
                 </td>
 
-                {/* Score cells */}
-                {brands.map((brand) => {
+                {/* Score cells — touching each other within the row */}
+                {brands.map((brand, bi) => {
                   const score = brand.scores[dim];
                   const hasRationale = !!brand.rationale[dim];
+                  const radius = cellRadius(bi, brands.length);
                   return (
-                    <td key={brand.name} style={{ padding: "6px 8px" }}>
+                    <td key={brand.name} style={{ padding: "6px 0" }}>
                       <div
-                        className="relative mx-auto flex items-center justify-center transition-all duration-150"
+                        className="relative flex items-center justify-center transition-opacity duration-150"
                         style={{
-                          background: matrixBg(score),
-                          borderRadius: 10,
-                          height: 48,
+                          background: matrixGradient(score),
+                          borderRadius: radius,
+                          height: 46,
                           cursor: hasRationale ? "pointer" : "default",
                         }}
                         onMouseEnter={(e) => handleCellEnter(e, brand, dim)}
                         onMouseLeave={handleCellLeave}
                       >
                         <span
-                          className="font-medium tabular-nums"
+                          className="font-medium tabular-nums select-none"
                           style={{
                             color: matrixFg(score),
-                            fontSize: 15,
+                            fontSize: 14,
                             letterSpacing: "-0.01em",
                           }}
                         >
@@ -156,8 +163,11 @@ export default function BrandMatrix({ brands }: { brands: Brand[] }) {
                         {/* Hover overlay */}
                         {hasRationale && (
                           <div
-                            className="absolute inset-0 rounded-[10px] opacity-0 hover:opacity-100 transition-opacity duration-100"
-                            style={{ background: "rgba(0,0,0,0.06)" }}
+                            className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-100"
+                            style={{
+                              background: "rgba(0,0,0,0.08)",
+                              borderRadius: radius,
+                            }}
                           />
                         )}
                       </div>
@@ -187,7 +197,7 @@ export default function BrandMatrix({ brands }: { brands: Brand[] }) {
                 const band = getBand(total);
                 const dotColor = scoreDotColor(total);
                 return (
-                  <td key={brand.name} style={{ padding: "16px 8px" }}>
+                  <td key={brand.name} style={{ padding: "16px 0" }}>
                     <div className="flex flex-col items-center gap-1.5">
                       {/* Score */}
                       <div className="flex items-baseline gap-0.5">
@@ -196,7 +206,7 @@ export default function BrandMatrix({ brands }: { brands: Brand[] }) {
                           style={{
                             fontSize: 22,
                             letterSpacing: "-0.02em",
-                            fontFamily: "var(--font-stack), sans-serif",
+                            fontFamily: "var(--font-graphik), sans-serif",
                           }}
                         >
                           {total}
@@ -231,8 +241,7 @@ export default function BrandMatrix({ brands }: { brands: Brand[] }) {
         <div
           className="h-2 rounded-full flex-1 max-w-[120px]"
           style={{
-            background:
-              "linear-gradient(to right, #F0EDE8, #D3CCC4, #A39A90, #5C5650, #1E1B18)",
+            background: `linear-gradient(to right, ${matrixBg(1)}, ${matrixBg(2)}, ${matrixBg(3)}, ${matrixBg(4)}, ${matrixBg(5)})`,
           }}
         />
         <span className="text-[10px] text-[#1A1A1A]">Strong</span>
@@ -265,7 +274,7 @@ export default function BrandMatrix({ brands }: { brands: Brand[] }) {
                 style={{ color: "#E5D62F" }}>
                 {tooltip.brand} · {tooltip.dimension}
               </p>
-              <p className="text-xs text-[#FDFBF5] leading-relaxed">
+              <p className="text-xs text-[#FAFAF8] leading-relaxed">
                 {tooltip.text}
               </p>
             </div>

@@ -59,7 +59,7 @@ export default function Results({ result, onRetake }: ResultsProps) {
           <div className="flex items-baseline gap-1.5">
             <span
               className="text-7xl font-black leading-none text-[#1A1A1A]"
-              style={{ fontFamily: "var(--font-stack), sans-serif", letterSpacing: "-0.03em" }}
+              style={{ fontFamily: "var(--font-graphik), sans-serif", letterSpacing: "-0.03em" }}
             >
               {total}
             </span>
@@ -71,7 +71,7 @@ export default function Results({ result, onRetake }: ResultsProps) {
             className="inline-block px-4 py-2 rounded-full text-sm font-bold"
             style={{
               background: bandColor,
-              color: band === "pre-bmf" ? "#1A1A1A" : "#FDFBF5",
+              color: band === "pre-bmf" ? "#1A1A1A" : "#FAFAF8",
             }}
           >
             {bandLabel}
@@ -91,7 +91,7 @@ export default function Results({ result, onRetake }: ResultsProps) {
             className="px-4 py-1.5 rounded-full text-xs font-medium transition-all"
             style={{
               background: vizTab === tab ? "#1A1A1A" : "transparent",
-              color: vizTab === tab ? "#FDFBF5" : "#1A1A1A",
+              color: vizTab === tab ? "#FAFAF8" : "#1A1A1A",
             }}
           >
             {tab === "bars" ? "Signal Bars" : "Fingerprint"}
@@ -126,7 +126,10 @@ export default function Results({ result, onRetake }: ResultsProps) {
         <p className="text-sm font-bold text-[#1A1A1A] mb-1.5">
           {signalVerdict.headline}
         </p>
-        <p className="text-sm text-[#1A1A1A] leading-relaxed mb-4">
+        <p
+          className="text-[1.05rem] text-[#1A1A1A] leading-relaxed mb-4"
+          style={{ fontFamily: '"Instrument Serif", Georgia, serif' }}
+        >
           {signalVerdict.body}
         </p>
         <a
@@ -160,7 +163,7 @@ export default function Results({ result, onRetake }: ResultsProps) {
             />
             <button
               type="submit"
-              className="px-5 py-2.5 rounded-full bg-[#1A1A1A] text-[#FDFBF5] text-sm font-medium hover:bg-[#333] transition-colors whitespace-nowrap"
+              className="px-5 py-2.5 rounded-full bg-[#1A1A1A] text-[#FAFAF8] text-sm font-medium hover:bg-[#333] transition-colors whitespace-nowrap"
             >
               Send it →
             </button>
