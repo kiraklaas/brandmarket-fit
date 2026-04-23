@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { DIMENSIONS_INFO } from "@/data/dimensions";
+import { BmfUnderline } from "./BmfUnderline";
 
 const SCORE_BANDS = [
   { range: "0–10", label: "Pre-BMF", desc: "Foundational work needed" },
@@ -49,16 +50,7 @@ export default function FiveDimensions() {
             style={{ fontFamily: "var(--font-graphik), system-ui, sans-serif" }}
           >
             How do you measure{" "}
-            <span
-              style={{
-                textDecoration: "underline",
-                textDecorationColor: "#E5D62F",
-                textDecorationThickness: "4px",
-                textUnderlineOffset: "8px",
-              }}
-            >
-              BMF
-            </span>
+            <BmfUnderline>BMF</BmfUnderline>
             ?
           </h2>
         </motion.div>
@@ -102,7 +94,7 @@ export default function FiveDimensions() {
                       <div>
                         <p className="text-sm font-semibold text-[#FAFAF8] mb-1">{dim.name}</p>
                         <p
-                          className="text-[1rem] leading-relaxed"
+                          className="text-[1.2rem] leading-relaxed"
                           style={{
                             fontFamily: '"Instrument Serif", Georgia, serif',
                             color: "#A09890",

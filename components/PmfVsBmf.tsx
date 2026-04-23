@@ -2,21 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-
-function BmfUnderline({ children }: { children: React.ReactNode }) {
-  return (
-    <span
-      style={{
-        textDecoration: "underline",
-        textDecorationColor: "#E5D62F",
-        textDecorationThickness: "4px",
-        textUnderlineOffset: "8px",
-      }}
-    >
-      {children}
-    </span>
-  );
-}
+import { BmfUnderline } from "./BmfUnderline";
 
 export default function PmfVsBmf() {
   return (
@@ -39,6 +25,10 @@ export default function PmfVsBmf() {
                 style={{
                   fontFamily: '"Instrument Serif", Georgia, serif',
                   fontWeight: 400,
+                  textDecoration: "underline",
+                  textDecorationColor: "#1A1A1A",
+                  textDecorationThickness: "3px",
+                  textUnderlineOffset: "8px",
                 }}
               >
                 PMF
@@ -49,13 +39,13 @@ export default function PmfVsBmf() {
 
             <div className="space-y-5">
               <p
-                className="text-[1.25rem] md:text-[1.35rem] leading-relaxed text-[#1A1A1A]"
+                className="text-[1.4rem] md:text-[1.5rem] leading-relaxed text-[#1A1A1A]"
                 style={{ fontFamily: '"Instrument Serif", Georgia, serif' }}
               >
-                Brand-market fit complements product-market fit: PMF ensures the product solves the <em style={{ fontStyle: "italic" }}>right problem</em>. BMF ensures the brand creates a meaningful connection with customers around <em style={{ fontStyle: "italic" }}>how</em> that problem is solved and who solves it.
+                Brand-market fit complements product-market fit: PMF ensures the product solves the right problem. BMF ensures the brand creates a meaningful connection with customers around how that problem is solved and who solves it.
               </p>
               <p
-                className="text-[1.25rem] md:text-[1.35rem] leading-relaxed text-[#1A1A1A]"
+                className="text-[1.4rem] md:text-[1.5rem] leading-relaxed text-[#1A1A1A]"
                 style={{ fontFamily: '"Instrument Serif", Georgia, serif' }}
               >
                 PMF gets you in the game. BMF helps you win it.
@@ -63,27 +53,28 @@ export default function PmfVsBmf() {
             </div>
           </motion.div>
 
-          {/* Right: image */}
+          {/* Right: transparent PNG with label */}
           <motion.div
+            className="flex justify-center"
             initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: 0.15 }}
           >
-            <div
-              className="w-full overflow-hidden flex items-center justify-center"
-              style={{
-                borderRadius: 20,
-                background: "#EBE6DC",
-                aspectRatio: "3/4",
-              }}
-            >
+            <div className="relative inline-block">
+              {/* Upper-right brand label */}
+              <span
+                className="absolute text-[9px] font-medium tracking-[0.12em] uppercase text-[#1A1A1A] whitespace-nowrap"
+                style={{ fontFamily: "var(--font-graphik), system-ui", top: -18, right: 0 }}
+              >
+                OURA
+              </span>
               <Image
                 src="/images/oura.png"
-                alt="Oura brand"
-                width={340}
-                height={453}
-                className="object-contain w-full h-full p-10"
+                alt="Oura ring"
+                width={260}
+                height={240}
+                className="object-contain drop-shadow-[0_8px_24px_rgba(0,0,0,0.1)]"
                 draggable={false}
               />
             </div>

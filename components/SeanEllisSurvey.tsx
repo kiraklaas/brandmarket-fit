@@ -37,13 +37,13 @@ export default function SeanEllisSurvey() {
             The PMF test for brand.
           </h2>
           <p
-            className="text-[1.1rem] text-[#1A1A1A] leading-relaxed mb-4"
+            className="text-[1.35rem] text-[#1A1A1A] leading-relaxed mb-4"
             style={{ fontFamily: '"Instrument Serif", Georgia, serif' }}
           >
             Sean Ellis&apos;s original PMF survey asks users: &ldquo;How would you feel if you could no longer use this product?&rdquo; If 40%+ answer with &ldquo;Very disappointed,&rdquo; you have PMF.
           </p>
           <p
-            className="text-[1.1rem] text-[#1A1A1A] leading-relaxed"
+            className="text-[1.35rem] text-[#1A1A1A] leading-relaxed"
             style={{ fontFamily: '"Instrument Serif", Georgia, serif' }}
           >
             The BMF survey asks: &ldquo;If this company completely overhauled their brand tomorrow (new name, new visual identity, new messaging), how would you feel?&rdquo;

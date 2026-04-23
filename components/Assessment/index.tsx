@@ -118,14 +118,14 @@ export default function Assessment() {
                 How strong is your BMF?
               </h2>
               <p
-                className="text-[1.1rem] text-[#1A1A1A] mb-2 leading-relaxed"
+                className="text-[1.35rem] text-[#1A1A1A] mb-2 leading-relaxed"
                 style={{ fontFamily: '"Instrument Serif", Georgia, serif' }}
               >
                 Answer 10 questions + one bonus. Takes ~4 minutes.
                 No login required.
               </p>
               <p
-                className="text-[1.05rem] text-[#1A1A1A] mb-10 leading-relaxed"
+                className="text-[1.2rem] text-[#1A1A1A] mb-10 leading-relaxed"
                 style={{ fontFamily: '"Instrument Serif", Georgia, serif' }}
               >
                 2 questions per dimension (internal signal + external signal).

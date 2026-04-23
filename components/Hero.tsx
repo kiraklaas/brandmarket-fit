@@ -19,22 +19,21 @@ interface BrandImage {
   top: string;
   left?: string;
   right?: string;
-  rotate: number;
   mouseX: number;
   mouseY: number;
   scrollY: number;
 }
 
+// No Ramp. No rotation. Claude ~40% bigger, Away ~100% bigger.
 const BRAND_IMAGES: BrandImage[] = [
   {
     src: "/images/poppi.png",
     label: "POPPI",
     alt: "Poppi soda can",
-    width: 90,
-    height: 108,
-    top: "8%",
-    left: "36%",
-    rotate: -7,
+    width: 78,
+    height: 94,
+    top: "10%",
+    left: "46%",
     mouseX: 0.5,
     mouseY: 0.3,
     scrollY: 0.28,
@@ -43,11 +42,10 @@ const BRAND_IMAGES: BrandImage[] = [
     src: "/images/sweetgreen.png",
     label: "SWEETGREEN",
     alt: "Sweetgreen fries",
-    width: 100,
-    height: 90,
-    top: "7%",
-    right: "4%",
-    rotate: 5,
+    width: 105,
+    height: 94,
+    top: "6%",
+    right: "5%",
     mouseX: -0.4,
     mouseY: 0.5,
     scrollY: 0.45,
@@ -56,37 +54,22 @@ const BRAND_IMAGES: BrandImage[] = [
     src: "/images/claude.png",
     label: "CLAUDE",
     alt: "Claude billboard",
-    width: 140,
-    height: 113,
-    top: "40%",
-    left: "17%",
-    rotate: -3,
+    width: 196,
+    height: 158,
+    top: "32%",
+    left: "8%",
     mouseX: 0.3,
     mouseY: -0.4,
     scrollY: 0.38,
   },
   {
-    src: "/images/ramp.png",
-    label: "RAMP",
-    alt: "Ramp OOH ad",
-    width: 125,
-    height: 106,
-    top: "28%",
-    right: "8%",
-    rotate: 6,
-    mouseX: -0.3,
-    mouseY: 0.4,
-    scrollY: 0.42,
-  },
-  {
     src: "/images/oura.png",
     label: "OURA",
     alt: "Oura ring",
-    width: 88,
-    height: 80,
-    top: "65%",
-    left: "40%",
-    rotate: -4,
+    width: 90,
+    height: 82,
+    top: "58%",
+    left: "34%",
     mouseX: 0.4,
     mouseY: 0.2,
     scrollY: 0.32,
@@ -95,18 +78,17 @@ const BRAND_IMAGES: BrandImage[] = [
     src: "/images/away.png",
     label: "AWAY",
     alt: "Away suitcase",
-    width: 110,
-    height: 136,
-    top: "52%",
-    right: "3%",
-    rotate: 4,
+    width: 220,
+    height: 272,
+    top: "38%",
+    right: "2%",
     mouseX: -0.5,
     mouseY: -0.3,
     scrollY: 0.55,
   },
 ];
 
-// Words that get Instrument Serif treatment (regular, not italic)
+// Words that get Instrument Serif treatment
 const SERIF_WORDS = new Set(["PRODUCT", "ISN'T", "GOOD", "BRAND"]);
 
 function Word({ text }: { text: string }) {
@@ -176,7 +158,7 @@ export default function Hero() {
         </a>
       </nav>
 
-      {/* Floating brand images — z-index above text */}
+      {/* Floating brand images */}
       {BRAND_IMAGES.map((img) => (
         <FloatingImage
           key={img.label}
@@ -189,7 +171,7 @@ export default function Hero() {
 
       {/* Headline */}
       <div className="relative z-10 flex-1 flex flex-col justify-center px-6 md:px-10 pb-20 pt-4">
-        {/* Lead-in line */}
+        {/* Lead-in */}
         <motion.p
           className="text-base md:text-lg text-[#1A1A1A] mb-4 leading-snug"
           style={{ fontFamily: '"Instrument Serif", Georgia, serif' }}
@@ -202,11 +184,8 @@ export default function Hero() {
 
         <h1
           className="uppercase text-[#1A1A1A] select-none leading-[0.88]"
-          style={{
-            fontSize: "clamp(3rem, 7.5vw, 8.5rem)",
-          }}
+          style={{ fontSize: "clamp(3rem, 7.5vw, 8.5rem)" }}
         >
-          {/* Line 1 */}
           <span className="block">
             {line1Words.map((w, i) => (
               <span key={i}>
@@ -215,7 +194,6 @@ export default function Hero() {
               </span>
             ))}
           </span>
-          {/* Line 2 */}
           <span className="block">
             {line2Words.map((w, i) => (
               <span key={i}>
@@ -243,11 +221,7 @@ function FloatingImage({
 }) {
   const x = useTransform(smoothX, (v) => v * img.mouseX * 0.04);
   const y = useTransform(smoothY, (v) => v * img.mouseY * 0.04);
-  const scrollOffset = useTransform(
-    scrollY,
-    [0, 800],
-    [0, img.scrollY * 100]
-  );
+  const scrollOffset = useTransform(scrollY, [0, 800], [0, img.scrollY * 100]);
   const combinedY = useTransform(
     [y, scrollOffset],
     ([mouseYVal, scrollVal]: number[]) => mouseYVal + scrollVal
@@ -262,24 +236,29 @@ function FloatingImage({
         right: img.right,
         x,
         y: combinedY,
-        rotate: img.rotate,
+        // No rotation
       }}
     >
-      <div className="flex flex-col items-center gap-1">
+      {/* Image with label at upper-right, 16px above, right-aligned */}
+      <div className="relative inline-block">
+        <span
+          className="absolute whitespace-nowrap text-[9px] font-medium tracking-[0.12em] text-[#1A1A1A] uppercase"
+          style={{
+            fontFamily: "var(--font-graphik), system-ui",
+            top: -18,
+            right: 0,
+          }}
+        >
+          {img.label}
+        </span>
         <Image
           src={img.src}
           alt={img.alt}
           width={img.width}
           height={img.height}
-          className="object-contain drop-shadow-[0_6px_20px_rgba(0,0,0,0.16)]"
+          className="object-contain drop-shadow-[0_6px_20px_rgba(0,0,0,0.12)]"
           draggable={false}
         />
-        <span
-          className="text-[9px] font-medium tracking-[0.1em] text-[#1A1A1A] uppercase"
-          style={{ fontFamily: "var(--font-graphik), system-ui" }}
-        >
-          {img.label}
-        </span>
       </div>
     </motion.div>
   );
